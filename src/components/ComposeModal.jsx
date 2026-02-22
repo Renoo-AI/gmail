@@ -2,6 +2,11 @@ import React from 'react';
 import { X, Minimize2, Maximize2, Trash2, MoreVertical, Paperclip, Link, Smile, Image, Lock, Send, ChevronDown } from 'lucide-react';
 
 const ComposeModal = ({ onClose }) => {
+  const handleSend = () => {
+    alert('Message sent!');
+    onClose();
+  };
+
   return (
     <div className="fixed bottom-0 right-10 w-[600px] bg-white rounded-t-xl shadow-2xl flex flex-col z-50 overflow-hidden border border-gray-200">
       <div className="flex items-center justify-between px-4 py-2.5 bg-gray-100 border-b border-gray-200">
@@ -33,7 +38,12 @@ const ComposeModal = ({ onClose }) => {
       <div className="px-4 py-3 flex items-center justify-between border-t border-gray-100 bg-white">
         <div className="flex items-center space-x-4">
           <div className="flex items-center bg-blue-700 hover:bg-blue-800 rounded-full overflow-hidden cursor-pointer">
-            <button className="pl-6 pr-4 py-2 text-white text-sm font-medium border-r border-blue-800">Send</button>
+            <button
+              onClick={handleSend}
+              className="pl-6 pr-4 py-2 text-white text-sm font-medium border-r border-blue-800"
+            >
+              Send
+            </button>
             <button className="px-2 py-2 text-white hover:bg-blue-900 transition-colors">
               <ChevronDown size={14} />
             </button>

@@ -261,3 +261,60 @@ export const adminStats = {
     { id: "ORD-004", customer: "Emily Brown", amount: "$45.00", status: "Completed", date: "2024-02-17" }
   ]
 };
+
+export const githubData = {
+  user: {
+    name: "Jules Engineer",
+    username: "jules-engineer",
+    bio: "Full-stack Developer & Replica Specialist. Building the future of web replicas.",
+    avatar: "https://i.pravatar.cc/150?u=jules",
+    followers: "12.4k",
+    following: "152",
+    location: "San Francisco, CA",
+    website: "https://jules.dev",
+    twitter: "@jules_dev"
+  },
+  repositories: [
+    {
+      name: "gmail-replica",
+      description: "A high-fidelity Gmail clone built with React 19 and Tailwind CSS v4.",
+      language: "JavaScript",
+      stars: 1250,
+      forks: 320,
+      updated: "2 days ago",
+      visibility: "Public"
+    },
+    {
+      name: "multi-app-hub",
+      description: "A central hub for managing multiple platform replicas with unified routing.",
+      language: "TypeScript",
+      stars: 850,
+      forks: 120,
+      updated: "5 hours ago",
+      visibility: "Public"
+    },
+    {
+      name: "tailwind-v4-explorer",
+      description: "Testing new features of Tailwind CSS v4 in real-world scenarios.",
+      language: "CSS",
+      stars: 420,
+      forks: 45,
+      updated: "1 week ago",
+      visibility: "Public"
+    },
+    {
+      name: "react-19-patterns",
+      description: "Collection of best practices and patterns for React 19 applications.",
+      language: "JavaScript",
+      stars: 2100,
+      forks: 450,
+      updated: "Yesterday",
+      visibility: "Public"
+    }
+  ],
+  activities: [
+    { type: "commit", repo: "gmail-replica", count: 12, date: "Today" },
+    { type: "pr", repo: "multi-app-hub", title: "Add GitHub Replica route", date: "2 hours ago" },
+    { type: "issue", repo: "tailwind-v4-explorer", title: "Support for CSS variables in themes", date: "Yesterday" }
+  ]
+};

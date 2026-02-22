@@ -1,21 +1,28 @@
 import React from 'react';
 import { Square, Star, Archive, Trash2, MailOpen, Clock } from 'lucide-react';
 
-const EmailRow = ({ email, onSelect }) => {
+const EmailRow = ({ email, onSelect, onToggleStar }) => {
   return (
     <div
-      onClick={() => onSelect(email)}
       className="flex items-center px-4 py-2 border-b border-gray-100 cursor-pointer hover:shadow-md hover:z-10 bg-white group"
     >
-      <div className="flex items-center space-x-3 mr-4">
+      <div className="flex items-center space-x-3 mr-4 z-20">
         <Square size={18} className="text-gray-300 hover:text-gray-500" />
-        <Star
-          size={18}
-          className={email.isStarred ? 'text-yellow-400 fill-yellow-400' : 'text-gray-300 hover:text-gray-500'}
-        />
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            onToggleStar(email.id);
+          }}
+          className="focus:outline-none"
+        >
+          <Star
+            size={18}
+            className={email.isStarred ? 'text-yellow-400 fill-yellow-400' : 'text-gray-300 hover:text-gray-500'}
+          />
+        </button>
       </div>
 
-      <div className="flex-1 flex items-center min-w-0">
+      <div onClick={() => onSelect(email)} className="flex-1 flex items-center min-w-0 h-full py-2">
         <div className={`w-48 text-sm truncate mr-4 ${!email.isRead ? 'font-bold text-gray-900' : 'text-gray-700'}`}>
           {email.sender}
         </div>

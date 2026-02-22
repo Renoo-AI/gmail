@@ -2,7 +2,7 @@ import React from 'react';
 import { Square, ChevronDown, RefreshCcw, MoreVertical, ChevronLeft, ChevronRight, Inbox, Tag, Users, Info } from 'lucide-react';
 import EmailRow from './EmailRow';
 
-const EmailList = ({ emails, onEmailSelect, activeTab, setActiveTab }) => {
+const EmailList = ({ emails, onEmailSelect, onToggleStar, activeTab, setActiveTab }) => {
   const tabs = [
     { id: 'primary', icon: Inbox, label: 'Primary', color: 'text-blue-600', activeBg: 'border-blue-600' },
     { id: 'promotions', icon: Tag, label: 'Promotions', color: 'text-green-600', activeBg: 'border-green-600' },
@@ -64,6 +64,7 @@ const EmailList = ({ emails, onEmailSelect, activeTab, setActiveTab }) => {
             key={email.id}
             email={email}
             onSelect={onEmailSelect}
+            onToggleStar={onToggleStar}
           />
         ))}
       </div>

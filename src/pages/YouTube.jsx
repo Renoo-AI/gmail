@@ -22,8 +22,16 @@ import { videos } from '../mockData';
 
 function YouTube() {
   const [searchQuery, setSearchQuery] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('All');
 
   const categories = ["All", "Music", "Gaming", "Live", "JavaScript", "React", "Mixes", "Computers", "Programming", "Podcasts", "News"];
+
+  const filteredVideos = videos.filter(video => {
+    const matchesSearch = video.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                         video.channel.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesCategory = selectedCategory === 'All' || video.title.includes(selectedCategory) || video.channel.includes(selectedCategory);
+    return matchesSearch && matchesCategory;
+  });
 
   return (
     <div className="flex flex-col h-screen bg-white font-sans text-gray-900">
@@ -112,11 +120,12 @@ function YouTube() {
         <main className="flex-1 overflow-y-auto bg-white">
           {/* Categories bar */}
           <div className="sticky top-0 bg-white z-40 px-4 py-3 flex gap-3 overflow-x-auto no-scrollbar">
-            {categories.map((cat, i) => (
+            {categories.map((cat) => (
               <button
                 key={cat}
+                onClick={() => setSelectedCategory(cat)}
                 className={`px-3 py-1.5 rounded-lg text-sm font-medium whitespace-nowrap transition-colors ${
-                  i === 0 ? 'bg-black text-white' : 'bg-gray-100 hover:bg-gray-200'
+                  selectedCategory === cat ? 'bg-black text-white' : 'bg-gray-100 hover:bg-gray-200'
                 }`}
               >
                 {cat}
@@ -126,9 +135,15 @@ function YouTube() {
 
           {/* Video Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-4 gap-y-10 p-4">
-            {videos.map((video) => (
-              <VideoCard key={video.id} video={video} />
-            ))}
+            {filteredVideos.length > 0 ? (
+              filteredVideos.map((video) => (
+                <VideoCard key={video.id} video={video} />
+              ))
+            ) : (
+              <div className="col-span-full py-20 text-center text-gray-500">
+                No videos found matching your search.
+              </div>
+            )}
           </div>
         </main>
       </div>

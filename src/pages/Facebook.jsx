@@ -198,6 +198,14 @@ function PostAction({ icon: Icon, label, color }) {
 }
 
 function Post({ post }) {
+  const [isLiked, setIsLiked] = useState(false);
+  const [likesCount, setLikesCount] = useState(post.likes);
+
+  const toggleLike = () => {
+    setIsLiked(!isLiked);
+    setLikesCount(prev => isLiked ? prev - 1 : prev + 1);
+  };
+
   return (
     <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
       <div className="p-4 flex items-center justify-between">
@@ -228,7 +236,7 @@ function Post({ post }) {
           <div className="bg-blue-500 p-1 rounded-full">
             <ThumbsUp className="w-3 h-3 text-white fill-white" />
           </div>
-          <span>{post.likes}</span>
+          <span>{likesCount}</span>
         </div>
         <div className="flex gap-3">
           <span>{post.comments} comments</span>
@@ -237,7 +245,12 @@ function Post({ post }) {
       </div>
 
       <div className="px-1 py-1 border-t border-gray-100 flex">
-        <PostActionBtn icon={ThumbsUp} label="Like" />
+        <PostActionBtn
+          icon={ThumbsUp}
+          label="Like"
+          active={isLiked}
+          onClick={toggleLike}
+        />
         <PostActionBtn icon={MessageSquare} label="Comment" />
         <PostActionBtn icon={Share2} label="Share" />
       </div>
@@ -245,10 +258,15 @@ function Post({ post }) {
   );
 }
 
-function PostActionBtn({ icon: Icon, label }) {
+function PostActionBtn({ icon: Icon, label, active, onClick }) {
   return (
-    <button className="flex-1 flex items-center justify-center gap-2 py-2 hover:bg-gray-100 rounded-lg transition-colors text-gray-500 font-semibold text-sm">
-      <Icon className="w-5 h-5" />
+    <button
+      onClick={onClick}
+      className={`flex-1 flex items-center justify-center gap-2 py-2 hover:bg-gray-100 rounded-lg transition-colors font-semibold text-sm ${
+        active ? 'text-blue-600' : 'text-gray-500'
+      }`}
+    >
+      <Icon className={`w-5 h-5 ${active ? 'fill-blue-600' : ''}`} />
       <span>{label}</span>
     </button>
   );

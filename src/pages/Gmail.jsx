@@ -29,6 +29,12 @@ function Gmail() {
     );
   };
 
+  const handleToggleStar = (id) => {
+    setEmails(prevEmails =>
+      prevEmails.map(e => e.id === id ? { ...e, isStarred: !e.isStarred } : e)
+    );
+  };
+
   const handleBackToList = () => {
     setSelectedEmail(null);
   };
@@ -59,6 +65,7 @@ function Gmail() {
             <EmailList
               emails={filteredEmails}
               onEmailSelect={handleEmailSelect}
+              onToggleStar={handleToggleStar}
               activeTab={activeTab}
               setActiveTab={setActiveTab}
             />
