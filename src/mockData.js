@@ -318,3 +318,46 @@ export const githubData = {
     { type: "issue", repo: "tailwind-v4-explorer", title: "Support for CSS variables in themes", date: "Yesterday" }
   ]
 };
+
+export const epsonData = {
+  comparison: [
+    {
+      model: "EcoTank ET-2850",
+      target: "Particuliers / Télétravail",
+      keyFeature: "Sans cartouche (Bouteilles)",
+      speed: "10.5 ppm",
+      connectivity: "Wi-Fi, Cloud Print",
+      price: "299€"
+    },
+    {
+      model: "WorkForce Pro WF-4830",
+      target: "PME / Bureaux",
+      keyFeature: "Haute productivité",
+      speed: "25 ppm",
+      connectivity: "Ethernet, Wi-Fi, Scan-to-Cloud",
+      price: "199€ (+ cartouches)"
+    },
+    {
+      model: "EcoTank Photo ET-8500",
+      target: "Créatifs / Photographes",
+      keyFeature: "Système 6 couleurs",
+      speed: "16 ppm",
+      connectivity: "SD Card, Wi-Fi, AirPrint",
+      price: "549€"
+    }
+  ],
+  faq: [
+    {
+      question: "Combien d'économies puis-je réellement réaliser avec EcoTank ?",
+      answer: "En moyenne, vous économisez jusqu'à 90% sur vos coûts d'encre. Une seule série de bouteilles d'encre équivaut à environ 72 cartouches traditionnelles."
+    },
+    {
+      question: "Qu'est-ce que la technologie Zéro Chaleur (Heat-Free) ?",
+      answer: "Contrairement au laser ou à d'autres jets d'encre, Epson n'utilise pas de chaleur pour éjecter l'encre. Cela signifie une première page plus rapide, une consommation d'énergie réduite et moins de pièces à remplacer."
+    },
+    {
+      question: "L'encre risque-t-elle de sécher si je n'imprime pas souvent ?",
+      answer: "Les imprimantes EcoTank sont conçues avec des réservoirs hermétiques et des têtes d'impression de haute précision pour minimiser le séchage, même en cas d'utilisation intermittente."
+    }
+  ]
+};

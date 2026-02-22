@@ -7,7 +7,8 @@ import {
   MessageSquare,
   Music,
   LayoutDashboard,
-  Github
+  Github,
+  Printer
 } from 'lucide-react';
 
 const apps = [
@@ -17,6 +18,7 @@ const apps = [
   { name: 'WhatsApp', path: '/whatsapp', icon: MessageSquare, color: 'text-green-500', bg: 'bg-green-50' },
   { name: 'YouTube Music', path: '/musicyoutube', icon: Music, color: 'text-red-500', bg: 'bg-gray-900' },
   { name: 'GitHub', path: '/github', icon: Github, color: 'text-gray-900', bg: 'bg-gray-100' },
+  { name: 'Epson Landing', path: '/epson', icon: Printer, color: 'text-blue-700', bg: 'bg-blue-50' },
   { name: 'Admin Dashboard', path: '/admin', icon: LayoutDashboard, color: 'text-indigo-600', bg: 'bg-indigo-50' },
 ];
 

@@ -125,7 +125,7 @@ function FacebookIcon({ className }) {
   );
 }
 
-function NavItem({ icon: Icon, active = false, label }) {
+function NavItem({ icon: Icon, active = false }) {
   return (
     <div className={`flex-1 flex items-center justify-center cursor-pointer group h-full relative`}>
       <div className={`p-3 rounded-xl transition-colors w-full flex items-center justify-center ${active ? '' : 'hover:bg-gray-100'}`}>

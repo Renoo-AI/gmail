@@ -8,6 +8,7 @@ const Facebook = lazy(() => import('./pages/Facebook'));
 const WhatsApp = lazy(() => import('./pages/WhatsApp'));
 const YouTubeMusic = lazy(() => import('./pages/YouTubeMusic'));
 const GitHub = lazy(() => import('./pages/GitHub'));
+const EpsonLanding = lazy(() => import('./pages/EpsonLanding'));
 const Admin = lazy(() => import('./pages/Admin'));
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route path="/whatsapp" element={<WhatsApp />} />
           <Route path="/musicyoutube" element={<YouTubeMusic />} />
           <Route path="/github" element={<GitHub />} />
+          <Route path="/epson" element={<EpsonLanding />} />
           <Route path="/admin" element={<Admin />} />
         </Routes>
       </Suspense>

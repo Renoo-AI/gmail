@@ -93,7 +93,7 @@ function Admin() {
               <p className="text-gray-500">Welcome back, here's what's happening with your store today.</p>
             </div>
             <button
-              onClick={() => alert('All source code for the 6 replicas is available in the repository. In a production environment, this would generate a .zip archive.')}
+              onClick={() => alert('All source code for the 8 replicas is available in the repository. In a production environment, this would generate a .zip archive.')}
               className="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2.5 rounded-xl font-bold flex items-center gap-2 shadow-lg shadow-indigo-200 transition-all active:scale-95 shrink-0"
             >
               <Download className="w-5 h-5" />
