@@ -4,10 +4,12 @@ import Sidebar from './components/Sidebar';
 import EmailList from './components/EmailList';
 import EmailView from './components/EmailView';
 import ComposeModal from './components/ComposeModal';
+import RightSidebar from './components/RightSidebar';
 import { emails as initialEmails } from './mockData';
 
 function App() {
   const [activeFolder, setActiveFolder] = useState('inbox');
+  const [activeTab, setActiveTab] = useState('primary');
   const [selectedEmail, setSelectedEmail] = useState(null);
   const [isComposeOpen, setIsComposeOpen] = useState(false);
   const [emails, setEmails] = useState(initialEmails);
@@ -37,7 +39,7 @@ function App() {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-white overflow-hidden">
+    <div className="flex flex-col h-screen bg-white overflow-hidden font-sans">
       <Header />
 
       <div className="flex flex-1 overflow-hidden">
@@ -47,7 +49,7 @@ function App() {
           onCompose={() => setIsComposeOpen(true)}
         />
 
-        <main className="flex-1 flex flex-col overflow-hidden">
+        <main className="flex-1 flex flex-col overflow-hidden border-l border-gray-100">
           {selectedEmail ? (
             <EmailView
               email={selectedEmail}
@@ -57,9 +59,13 @@ function App() {
             <EmailList
               emails={filteredEmails}
               onEmailSelect={handleEmailSelect}
+              activeTab={activeTab}
+              setActiveTab={setActiveTab}
             />
           )}
         </main>
+
+        <RightSidebar />
       </div>
 
       {isComposeOpen && (
