@@ -1,77 +1,29 @@
-import React, { useState } from 'react';
-import Header from './components/Header';
-import Sidebar from './components/Sidebar';
-import EmailList from './components/EmailList';
-import EmailView from './components/EmailView';
-import ComposeModal from './components/ComposeModal';
-import RightSidebar from './components/RightSidebar';
-import { emails as initialEmails } from './mockData';
+import React, { lazy, Suspense } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+const Home = lazy(() => import('./pages/Home'));
+const Gmail = lazy(() => import('./pages/Gmail'));
+const YouTube = lazy(() => import('./pages/YouTube'));
+const Facebook = lazy(() => import('./pages/Facebook'));
+const WhatsApp = lazy(() => import('./pages/WhatsApp'));
+const YouTubeMusic = lazy(() => import('./pages/YouTubeMusic'));
+const Admin = lazy(() => import('./pages/Admin'));
 
 function App() {
-  const [activeFolder, setActiveFolder] = useState('inbox');
-  const [activeTab, setActiveTab] = useState('primary');
-  const [selectedEmail, setSelectedEmail] = useState(null);
-  const [isComposeOpen, setIsComposeOpen] = useState(false);
-  const [emails, setEmails] = useState(initialEmails);
-
-  const filteredEmails = emails.filter(email => {
-    if (activeFolder === 'starred') {
-      return email.isStarred;
-    }
-    return email.folder === activeFolder;
-  });
-
-  const handleEmailSelect = (email) => {
-    setSelectedEmail(email);
-    // Mark as read
-    setEmails(prevEmails =>
-      prevEmails.map(e => e.id === email.id ? { ...e, isRead: true } : e)
-    );
-  };
-
-  const handleBackToList = () => {
-    setSelectedEmail(null);
-  };
-
-  const handleFolderChange = (folderId) => {
-    setActiveFolder(folderId);
-    setSelectedEmail(null);
-  };
-
   return (
-    <div className="flex flex-col h-screen bg-white overflow-hidden font-sans">
-      <Header />
-
-      <div className="flex flex-1 overflow-hidden">
-        <Sidebar
-          activeFolder={activeFolder}
-          setActiveFolder={handleFolderChange}
-          onCompose={() => setIsComposeOpen(true)}
-        />
-
-        <main className="flex-1 flex flex-col overflow-hidden border-l border-gray-100">
-          {selectedEmail ? (
-            <EmailView
-              email={selectedEmail}
-              onBack={handleBackToList}
-            />
-          ) : (
-            <EmailList
-              emails={filteredEmails}
-              onEmailSelect={handleEmailSelect}
-              activeTab={activeTab}
-              setActiveTab={setActiveTab}
-            />
-          )}
-        </main>
-
-        <RightSidebar />
-      </div>
-
-      {isComposeOpen && (
-        <ComposeModal onClose={() => setIsComposeOpen(false)} />
-      )}
-    </div>
+    <Router>
+      <Suspense fallback={<div className="h-screen w-screen flex items-center justify-center">Loading...</div>}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/gmail" element={<Gmail />} />
+          <Route path="/youtube" element={<YouTube />} />
+          <Route path="/facebook" element={<Facebook />} />
+          <Route path="/whatsapp" element={<WhatsApp />} />
+          <Route path="/musicyoutube" element={<YouTubeMusic />} />
+          <Route path="/admin" element={<Admin />} />
+        </Routes>
+      </Suspense>
+    </Router>
   );
 }
 
